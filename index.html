@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Keka HR</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  
+  <style>
+    /* Reset and base */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #071A3D; /* Dark blue */
+      color: #e0e6f1;
+      line-height: 1.6;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+    a {
+      color: #00C853; /* Green accent */
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a:hover, a:focus {
+      color: #66ff99;
+      outline: none;
+    }
+    
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* NAVBAR */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #0a2342;
+      box-shadow: 0 2px 8px rgb(0 0 0 / 0.5);
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 24px;
+      height: 60px;
+    }
+    nav .logo {
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: #00C853;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: default;
+      user-select: none;
+      font-family: 'Inter', sans-serif;
+      text-shadow: 0 0 8px #00C853;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 24px;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li {
+      display: inline;
+    }
+    nav ul li a {
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 10px 8px;
+      border-radius: 6px;
+      display: inline-block;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    nav ul li a:hover,
+    nav ul li a:focus {
+      background-color: #00C853;
+      color: #071A3D;
+      outline: none;
+      box-shadow: 0 0 7px 2px #30e07a;
+    }
+
+    /* --- HERO SECTION --- */
+    header#home {
+      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center center/cover no-repeat;
+      position: relative;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      padding: 0 20px;
+      margin-top: 60px; /* nav height offset */
+    }
+    
+    header#home::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(7, 26, 61, 0.8);
+      z-index: 0;
+    }
+    header#home > * {
+      position: relative;
+      z-index: 1;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+    header#home h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 0.25em;
+      color: #00C853;
+      text-shadow: 0 0 15px #00C853;
+    }
+    header#home p {
+      font-size: 1.6rem;
+      margin-bottom: 1.5em;
+      color: #c8ded9;
+    }
+    header#home .cta-button {
+      background: #00C853;
+      color: #071A3D;
+      border: none;
+      padding: 16px 48px;
+      font-size: 1.25rem;
+      font-weight: 600;
+      border-radius: 50px;
+      box-shadow: 0 8px 12px rgba(0, 200, 83, 0.5);
+      cursor: pointer;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      display: inline-block;
+      text-decoration: none;
+    }
+    header#home .cta-button:hover,
+    header#home .cta-button:focus {
+      background: #30e07a;
+      box-shadow: 0 12px 20px rgba(48, 224, 122, 0.6);
+      outline: none;
+      color: #071A3D;
+    }
+
+    /* --- Sections --- */
+    section {
+      padding: 60px 0;
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+    h2.section-title {
+      font-size: 2.75rem;
+      text-align: center;
+      margin-bottom: 40px;
+      color: #00C853;
+      text-shadow: 0 0 10px #00C853;
+    }
+
+    /* ABOUT US */
+    .about p, .about h3 {
+      max-width: 700px;
+      margin: 0 auto 20px;
+      font-weight: 400;
+      color: #cadadb;
+    }
+    .about h3 {
+      font-weight: 600;
+      color: #00C853;
+      font-size: 1.8rem;
+      margin-top: 40px;
+    }
+
+    /* PRODUCTS & SERVICES */
+    .products {
+      background: #0f2a64;
+      border-radius: 12px;
+      padding: 50px 0;
+    }
+    .products-container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 40px;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .product-card {
+      background: #183c8a;
+      border-radius: 16px;
+      padding: 30px 25px;
+      flex: 1 1 350px;
+      box-shadow: 0 8px 15px rgba(0, 200, 83, 0.3);
+      transition: transform 0.3s ease;
+      color: #d1e8d1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .product-card:hover,
+    .product-card:focus-within {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 25px rgba(48, 224, 122, 0.5);
+      outline: none;
+    }
+    .product-icon {
+      font-size: 3.5rem;
+      color: #00db54;
+      margin-bottom: 20px;
+      filter: drop-shadow(0 0 4px #00ff7f);
+      transition: transform 0.3s ease;
+    }
+    .product-card:hover .product-icon {
+      transform: scale(1.2);
+    }
+    .product-card h3 {
+      margin: 0 0 15px;
+      font-weight: 700;
+      font-size: 1.6rem;
+    }
+    .product-card p {
+      font-size: 1rem;
+      line-height: 1.5;
+      margin-bottom: 15px;
+      color: #cdeac0;
+      text-align: center;
+    }
+    .product-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      color: #a2dba0;
+      font-size: 0.95rem;
+      text-align: left;
+    }
+    .product-card ul li {
+      margin-bottom: 10px;
+      position: relative;
+      padding-left: 16px;
+    }
+    .product-card ul li::before {
+      content: "\f00c";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #66ff99;
+      font-size: 0.9rem;
+      line-height: 1;
+    }
+
+    /* TECHNOLOGIES */
+    .technologies {
+      margin-top: 40px;
+    }
+    .technologies ul {
+      max-width: 700px;
+      margin: 0 auto;
+      list-style: none;
+      padding: 0;
+      color: #b6dcb0;
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+    .technologies ul li {
+      margin-bottom: 15px;
+      position: relative;
+      padding-left: 20px;
+    }
+    .technologies ul li::before {
+      content: "\f058";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      position: absolute;
+      left: 0;
+      top: 3px;
+      color: #66ff99;
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    /* TESTIMONIALS */
+    .testimonials {
+      background: #0f2a64;
+      border-radius: 12px;
+      padding: 50px 0 60px;
+      max-width: 900px;
+      margin: 0 auto 60px;
+      color: #e0f4e0;
+      text-align: center;
+      box-shadow: 0 0 25px rgba(0, 200, 83, 0.3);
+    }
+    .testimonial {
+      font-style: italic;
+      font-size: 1.2rem;
+      margin: 20px 40px;
+      position: relative;
+    }
+    .testimonial::before {
+      content: "“";
+      font-size: 3rem;
+      position: absolute;
+      left: -30px;
+      top: -20px;
+      color: #00db54;
+      font-weight: bold;
+      font-family: serif;
+    }
+    .testimonial::after {
+      content: "”";
+      font-size: 3rem;
+      position: absolute;
+      right: -30px;
+      bottom: -20px;
+      color: #00db54;
+      font-weight: bold;
+      font-family: serif;
+    }
+    .testimonial-author {
+      margin-top: 10px;
+      font-weight: 600;
+      font-size: 1rem;
+      color: #aadea0;
+    }
+
+    /* CONTACT */
+    .contact {
+      max-width: 600px;
+      margin: 0 auto 60px;
+      background: #183c8a;
+      border-radius: 12px;
+      padding: 40px 30px;
+      box-shadow: 0 8px 25px rgba(0, 200, 83, 0.3);
+    }
+    .contact p {
+      margin: 10px 0 25px;
+      font-size: 1.1rem;
+      color: #c4e4be;
+    }
+    .contact a {
+      color: #a0e8a0;
+      word-break: break-all;
+    }
+
+    /* Contact form styles */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      padding: 14px 18px;
+      border-radius: 8px;
+      border: none;
+      background: #0a2342;
+      color: #d0f2c7;
+      font-size: 1rem;
+      box-shadow: inset 0 0 5px #00db5475;
+      resize: vertical;
+      transition: box-shadow 0.3s ease;
+    }
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    textarea:focus {
+      outline: none;
+      box-shadow: 0 0 8px 2px #00db54;
+      background: #061933;
+    }
+    textarea {
+      min-height: 120px;
+    }
+    button[type="submit"] {
+      background: #00C853;
+      font-weight: 600;
+      padding: 16px 0;
+      border: none;
+      border-radius: 50px;
+      color: #071A3D;
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 8px 15px rgba(0, 200, 83, 0.65);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+    button[type="submit"]:hover,
+    button[type="submit"]:focus {
+      background: #30e07a;
+      box-shadow: 0 12px 25px rgba(48, 224, 122, 0.85);
+      outline: none;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      color: #3abb7e;
+      padding: 30px 10px;
+      border-top: 1px solid #0f2c65;
+      font-size: 0.95rem;
+      letter-spacing: 1px;
+      user-select: none;
+    }
+
+    /* Media Queries */
+    @media (max-width: 950px) {
+      .products-container {
+        flex-direction: column;
+        align-items: center;
+      }
+      .product-card {
+        max-width: 400px;
+      }
+      nav ul {
+        gap: 12px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header#home h1 {
+        font-size: 2.5rem;
+      }
+      header#home p {
+        font-size: 1.2rem;
+      }
+      .products-container, .testimonials {
+        padding: 0 10px;
+      }
+      .testimonial {
+        font-size: 1rem;
+        margin: 15px 10px;
+      }
+      nav {
+        padding: 0 12px;
+      }
+      nav .logo {
+        font-size: 1rem;
+      }
+      nav ul li a {
+        font-size: 0.9rem;
+        padding: 8px 6px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav role="navigation" aria-label="Primary">
+    <div class="logo">Keka HR</div>
+    <ul>
+      <li><a href="#home" tabindex="0">Home</a></li>
+      <li><a href="#about" tabindex="0">About Us</a></li>
+      <li><a href="#products" tabindex="0">Products &amp; Services</a></li>
+      <li><a href="#technologies" tabindex="0">Technologies</a></li>
+      <li><a href="#testimonials" tabindex="0">Testimonials</a></li>
+      <li><a href="#contact" tabindex="0">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header id="home" role="banner">
+    <h1>Keka HR</h1>
+    <p>Empowering HR with Innovative Solutions</p>
+    <a href="#contact" class="cta-button" role="button" aria-label="Request a Demo">Request a Demo</a>
+  </header>
+
+  <main class="container" role="main">
+    <section class="about" id="about" tabindex="-1">
+      <h2 class="section-title">About Us</h2>
+      <p>Keka HR is a leading HR software solution designed to simplify and automate HR processes for businesses of all sizes.</p>
+      <h3>Vision</h3>
+      <p>To revolutionize the HR landscape with technology that enhances employee experience and streamlines HR operations.</p>
+    </section>
+
+    <section class="products" id="products" tabindex="-1">
+      <h2 class="section-title">Products &amp; Services</h2>
+      <div class="products-container">
+        <article class="product-card" tabindex="0" aria-label="Keka HR Software">
+          <div class="product-icon" aria-hidden="true"><i class="fa-solid fa-user-tie"></i></div>
+          <h3>Keka HR Software</h3>
+          <p>Comprehensive HR management software for seamless HR operations.</p>
+          <ul>
+            <li>Employee Management</li>
+            <li>Payroll Processing</li>
+            <li>Performance Management</li>
+          </ul>
+        </article>
+
+        <article class="product-card" tabindex="0" aria-label="Keka Payroll">
+          <div class="product-icon" aria-hidden="true"><i class="fa-solid fa-money-bill-wave"></i></div>
+          <h3>Keka Payroll</h3>
+          <p>Automated payroll processing to ensure timely and accurate salary disbursement.</p>
+          <ul>
+            <li>Tax Compliance</li>
+            <li>Customizable Payslips</li>
+            <li>Employee Self-Service</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="technologies" id="technologies" tabindex="-1">
+      <h2 class="section-title">Technologies We Use</h2>
+      <ul>
+        <li>Cloud-based HR solutions</li>
+        <li>AI-driven analytics for HR insights</li>
+        <li>Mobile-friendly applications for on-the-go access</li>
+      </ul>
+    </section>
+
+    <section class="testimonials" id="testimonials" tabindex="-1" aria-label="User  testimonials">
+      <h2 class="section-title">Testimonials</h2>
+      <blockquote class="testimonial" tabindex="0">
+        Keka HR has transformed our HR processes and improved employee satisfaction!
+        <div class="testimonial-author">- HR Manager A</div
